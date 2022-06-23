@@ -1,5 +1,5 @@
-https://fswind.github.io/categories/index.html
-https://fswind.github.io/tags/index.html
-https://fswind.github.io/2022/06/23/hello-world/
-https://fswind.github.io/2022/06/23/sa/
-https://fswind.github.io/
+http://fswind.github.io/categories/index.html
+http://fswind.github.io/tags/index.html
+http://fswind.github.io/2022/06/23/hello-world/
+http://fswind.github.io/2022/06/23/sa/
+http://fswind.github.io/
