@@ -1,5 +1,5 @@
-http://example.com/categories/index.html
-http://example.com/tags/index.html
-http://example.com/2022/06/23/sa/
-http://example.com/2022/06/23/hello-world/
-http://example.com/
+https://fswind.github.io/categories/index.html
+https://fswind.github.io/tags/index.html
+https://fswind.github.io/2022/06/23/hello-world/
+https://fswind.github.io/2022/06/23/sa/
+https://fswind.github.io/

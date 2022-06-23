@@ -3,11 +3,11 @@
   <title>fsiwnd</title>
   
   <subtitle>fswind</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://fswind.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://fswind.github.io/"/>
   <updated>2022-06-23T08:10:17.385Z</updated>
-  <id>http://example.com/</id>
+  <id>https://fswind.github.io/</id>
   
   <author>
     <name>fswind</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2022/06/23/sa/"/>
-    <id>http://example.com/2022/06/23/sa/</id>
+    <link href="https://fswind.github.io/2022/06/23/sa/"/>
+    <id>https://fswind.github.io/2022/06/23/sa/</id>
     <published>2022-06-23T08:57:04.946Z</published>
     <updated>2022-06-23T08:10:17.385Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2022/06/23/hello-world/"/>
-    <id>http://example.com/2022/06/23/hello-world/</id>
+    <link href="https://fswind.github.io/2022/06/23/hello-world/"/>
+    <id>https://fswind.github.io/2022/06/23/hello-world/</id>
     <published>2022-06-23T03:03:47.859Z</published>
     <updated>2022-06-23T08:10:17.385Z</updated>
     
