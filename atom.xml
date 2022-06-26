@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>fsiwnd</title>
+  
+  <subtitle>fswind</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2022-06-26T13:07:54.463Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>fswind</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第二课：指针的性质</title>
+    <link href="http://example.com/2022/06/26/%E7%AC%AC%E4%BA%8C%E8%AF%BE%EF%BC%9A%E6%8C%87%E9%92%88%E7%9A%84%E6%80%A7%E8%B4%A8/"/>
+    <id>http://example.com/2022/06/26/%E7%AC%AC%E4%BA%8C%E8%AF%BE%EF%BC%9A%E6%8C%87%E9%92%88%E7%9A%84%E6%80%A7%E8%B4%A8/</id>
+    <published>2022-06-26T09:04:17.858Z</published>
+    <updated>2022-06-26T13:07:54.463Z</updated>
+    
+    <content type="html"><![CDATA[<p>上一节课我们讲了<a href="https://fswind.github.io/2022/06/25/%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E6%8C%87%E9%92%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">指针的基本概念</a>，如果没有看的可以再去看一遍，今天我们将在上一节课的基础上讲指针的性质</p><hr><h1 id="第二课：指针的性质"><a href="#第二课：指针的性质" class="headerlink" title="第二课：指针的性质"></a>第二课：指针的性质</h1><p>首先，由于指针的值是一个地址。这就说明了什么，由于地址的值在运行阶段是不会发生改变的。而这个不变量便相当于一座桥梁，只要指针指向的值改变，那么指针的解引用也会变。反过来说，指针的解引用改变，那么指针指向的值也会变。现在可能不能理解，我先写一段代码，然后画图解释一下</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span>* b = &amp;a;</span><br></pre></td></tr></table></figure><p>现在我声明了一个整型变量a，初始值为10。又声明了一个指针b，让它指向a</p><p>现在我们输出一下a和*b的值，你们猜猜是多少</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; <span class="string">&quot;a =&quot;</span> &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;*b =&quot;</span> &lt;&lt; *b &lt;&lt; endl;</span><br></pre></td></tr></table></figure><p>答案是10，现在都还在我们的学习范围内，接下来我增加一行代码</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">100</span>;</span><br></pre></td></tr></table></figure><p>那现在在输出*b和a的值又是多少呢？</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; <span class="string">&quot;a =&quot;</span> &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;*b =&quot;</span> &lt;&lt; *b &lt;&lt; endl;</span><br></pre></td></tr></table></figure><p>答案是100，唉，有人可能会问：“为啥a变成100过后，*b咋也变成100了？”</p><p>问得好，我现在画一个图</p><p><img src="https://i-s2.328888.xyz/2022/06/26/62b81965b9f59.png" alt="img"></p><p>熟悉吧？现在我们做了个a&#x3D;100的操作对吧</p><p><img src="https://i-s2.328888.xyz/2022/06/26/62b819e50f0b4.png" alt="img"></p><p>当a&#x3D;100时，可能你自己都发现了，a的地址是一直没变的，也就是说<em>b还能找到a，</em>b还是&#x3D;a</p><p>这就相当于什么呢？你给一个变量多了个名字，就是麻烦一点。唉，你别说，还真有个东西叫做引用，专门给变量取别名，叫做引用。不过这便是后话了</p><p>你可能会好奇，地址到底是何方神圣，可以直接操控指针。你可以把地址当做大名，每个人的大名肯定不一样（举例而已，不必较真），就像变量一样。而变量名，便像你的小名。值的话就是你拥有的财产。而指针呢，它的财产就是你的大名，相当于它就是你的监护人，至于你的财产嘛，前面加个*号就可以拿走啦（悲），当然监护人也有自己的大名，这就有了二级指针，就是一个指针指向一个指针，简称套娃。这样的话，监护人的财产和你的财产，就相当于共享</p><h1 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h1><h2 id="判断题"><a href="#判断题" class="headerlink" title="判断题"></a>判断题</h2><ol><li><p>指针的值是指向变量的名字</p></li><li><p>指针的值是地址，但它本身没有地址</p></li><li><p>指针的解引用改变后，指针指向的值也会改</p></li></ol><h2 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h2><ol><li><p>指针的好处是什么？</p></li><li><p>指针有没有自己的地址，有的话应该怎么获取，没有请说明理由</p></li><li><p>都说指针顶了C语言半边天，请根据现在说明理由</p></li></ol><h2 id="实操题"><a href="#实操题" class="headerlink" title="实操题"></a>实操题</h2><ol><li>声明一个整型变量a为10，用b来指向a，尝试输出b的地址</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;上一节课我们讲了&lt;a href=&quot;https://fswind.github.io/2022/06/25/%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E6%8C%87%E9%92%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6</summary>
+      
+    
+    
+    
+    <category term="从小白到精通" scheme="http://example.com/categories/%E4%BB%8E%E5%B0%8F%E7%99%BD%E5%88%B0%E7%B2%BE%E9%80%9A/"/>
+    
+    <category term="指针" scheme="http://example.com/categories/%E4%BB%8E%E5%B0%8F%E7%99%BD%E5%88%B0%E7%B2%BE%E9%80%9A/%E6%8C%87%E9%92%88/"/>
+    
+    
+    <category term="C/C++" scheme="http://example.com/tags/C-C/"/>
+    
+    <category term="指针" scheme="http://example.com/tags/%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一课：指针的基本概念</title>
+    <link href="http://example.com/2022/06/25/%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E6%8C%87%E9%92%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>http://example.com/2022/06/25/%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E6%8C%87%E9%92%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</id>
+    <published>2022-06-25T12:53:33.015Z</published>
+    <updated>2022-06-26T00:55:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>相信各位在学习C&#x2F;C++的时候，指针应该是比较难了的吧？当时，可谓打退了一批又一批的人啊</p><p>今天，我就用这一系列的课程来解决你们对指针的困惑!所以，不妨Ctrl+D收藏一波？</p><hr><h1 id="第一课：指针的基本概念"><a href="#第一课：指针的基本概念" class="headerlink" title="第一课：指针的基本概念"></a>第一课：指针的基本概念</h1><h2 id="变量的地址"><a href="#变量的地址" class="headerlink" title="变量的地址"></a>变量的地址</h2><p>变量，是内存变量的简称。在C++中，只要定义一个变量，编译器就会放在一个指定的区域里，并且为这个变量分配一个内存</p><p>比如：我现在声明一个整型变量a，它的值为10，写成代码就是</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure><p>如果把这个转化成图，便是</p><p><img src="https://i-s2.328888.xyz/2022/06/25/62b6610f9cfa6.png" alt="img"></p><p>但这个地址是我瞎编的，我们如何获取到一个变量在内存中的地址呢？语法很简单</p><p><strong>取址语法：&amp;变量名；</strong></p><p>可以看见，这个语法叫做取址，说成大白话就是取变量的地址。而且，变量的地址是会变化的，但肯定不是在运行阶段时变化，而是你每次编译时对变量a取址时的地址是会不断变的。换句话说就是每次编译器都会给变量随机的内存</p><p>不过，还有一点需要注意，如果你尝试让cout去输出char变量的地址，会产生bug，原因是cout输出地址时是把地址当字符串的，（有兴趣的可以去搜索cout类的底层结构，我以后也会讲）这时有两种解决方案（不同的编译器反应不同，但大部分不会显示一个地址）</p><h3 id="1-让地址强转成void"><a href="#1-让地址强转成void" class="headerlink" title="1. 让地址强转成void*"></a>1. 让地址强转成void*</h3><p>void*是什么意思呢？我以后再讲，你现在会用就行了</p><p>比如我现在声明一个字符型变量a，它的值为‘K’，写成代码就是</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a = <span class="string">&#x27;K&#x27;</span>;</span><br></pre></td></tr></table></figure><p>现在要获取变量a的地址，就可以使用void*</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a = <span class="string">&#x27;K&#x27;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;变量a的地址为：&quot;</span> &lt;&lt; (<span class="type">void</span>*)&amp;a &lt;&lt; endl;</span><br></pre></td></tr></table></figure><p>这时便能输出正确的16进制地址</p><h3 id="2-让地址强转成整数"><a href="#2-让地址强转成整数" class="headerlink" title="2. 让地址强转成整数"></a>2. 让地址强转成整数</h3><p>这能理解吧？直接安排代码！</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a = <span class="string">&#x27;K&#x27;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;变量a的地址为：&quot;</span> &lt;&lt; (<span class="type">int</span>)&amp;a &lt;&lt; endl;</span><br></pre></td></tr></table></figure><p>还是以刚刚那个例子来说，但是！在VS中int只有4字节（不同的编译器与不同的操作系统不一样），装不下，得用long long（注意：long long是C++11的东西，有些编译器可能不支持，可以下载VS2022，毕竟它基本上都支持，但我也用VScode，看个人喜好吧）</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a = <span class="string">&#x27;K&#x27;</span>;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;变量a的地址为：&quot;</span> &lt;&lt; (<span class="type">long</span> <span class="type">long</span>)&amp;a &lt;&lt; endl;</span><br></pre></td></tr></table></figure><p>这时便能输出正确的整数（10进制）地址</p><h2 id="指针变量"><a href="#指针变量" class="headerlink" title="指针变量"></a>指针变量</h2><p>指针变量简称指针，比如你现在想要让一个变量的值是一个地址，可不可以呢？当然可以！贴心的编译器（ ？）甚至为你做了一个新的东东，就叫指针</p><p><em><em>声明指针语法：数据类型</em> 变量名；</em>*</p><p>这便是声明指针的语法，是不是很简单？但有的小盆友看见“ * ”这个符号就懵逼，其实你把这个*号和前面的数据类型连在一起，当成一个新的数据类型就行了，这个数据类型有一个专门的名称，叫做复合数据类型</p><p>例如：声明一个整型变量a，让变量b指向a</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="type">int</span>* b = &amp;a;</span><br></pre></td></tr></table></figure><p>这里要注意两点：</p><ul><li><p>指针的数据类型最好和指向的变量的数据类型相等，大多数新手很难保证强转的规则</p></li><li><p>指针的值应当是一个地址，所以要加&amp;符</p></li></ul><h2 id="对指针赋值与解引用"><a href="#对指针赋值与解引用" class="headerlink" title="对指针赋值与解引用"></a>对指针赋值与解引用</h2><h3 id="对指针赋值"><a href="#对指针赋值" class="headerlink" title="对指针赋值"></a>对指针赋值</h3><p><em><em>指针赋值语法：数据类型</em> 变量名 &#x3D; 数据类型 &amp;变量名；</em>*</p><p>其实我们刚刚就稍稍讲了一下，就是相当于一个变量的声明加初始化嘛！我就不啰嗦了，不过还是要再提一下注意的两点</p><ul><li><p>指针的数据类型最好和指向的变量的数据类型相等，大多数新手很难保证强转的规则</p></li><li><p>指针的值应当是一个地址，所以要加&amp;符</p></li></ul><h4 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h4><p><strong>解引用语法：*指针名；</strong></p><p>这样就能获取一个指针它实际指向的值，光讲大家可能不明白，我给大家画张图（基于上一个案例）</p><p><img src="https://i-s2.328888.xyz/2022/06/25/62b702890c321.png" alt="img"></p><p>现在大概懂了吧，就是说*b的值就等于a（注意！a是指10，可别被前面给误导了）</p><p>接下来是复习题，不要看前面的内容，不然当场拿出去斩了！（ bushi ）</p><h1 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h1><h2 id="判断题"><a href="#判断题" class="headerlink" title="判断题"></a>判断题</h2><ol><li><p>指针的数据类型与指向的变量的数据类型必须相等</p></li><li><p>解引用可以获得指针的地址</p></li><li><p>指针的值是变量名</p></li></ol><h2 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h2><ol><li><p>声明一个指针需要注意什么？</p></li><li><p>判断一个变量是指针需要哪些条件？</p></li><li><p>指针自己的值是什么？</p></li></ol><h2 id="实操题"><a href="#实操题" class="headerlink" title="实操题"></a>实操题</h2><ol><li><p>声明一个变量Base，让son1、son2、son3······指向Base</p></li><li><p>做一个案例，尝试让一个指针指向多个变量，可以吗</p></li></ol><hr><p>好了！这便是今天的课程，如果不懂的可以随时询问客户，如果有建议请提给客户，本人文笔不好，感觉有帮助的请Ctrl+D收藏起来，以便等待下一课的到来！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;相信各位在学习C&amp;#x2F;C++的时候，指针应该是比较难了的吧？当时，可谓打退了一批又一批的人啊&lt;/p&gt;
+&lt;p&gt;今天，我就用这一系列的课程来解决你们对指针的困惑!所以，不妨Ctrl+D收藏一波？&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;第一课：指针的基本概念&quot;&gt;&lt;a href=</summary>
+      
+    
+    
+    
+    <category term="从小白到精通" scheme="http://example.com/categories/%E4%BB%8E%E5%B0%8F%E7%99%BD%E5%88%B0%E7%B2%BE%E9%80%9A/"/>
+    
+    <category term="指针" scheme="http://example.com/categories/%E4%BB%8E%E5%B0%8F%E7%99%BD%E5%88%B0%E7%B2%BE%E9%80%9A/%E6%8C%87%E9%92%88/"/>
+    
+    
+    <category term="C/C++" scheme="http://example.com/tags/C-C/"/>
+    
+    <category term="指针" scheme="http://example.com/tags/%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
+  
+</feed>
